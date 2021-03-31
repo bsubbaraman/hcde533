@@ -1,69 +1,271 @@
-
-html, body {
-  padding: 0 0 0 0;
-  margin: 0;
-  font-family: 'helvetica', 'arial', 'sans';
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
-h1,h2,h3,h4 {
-  font-family: 'helvetica', 'arial', 'sans';
-  }
-
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #0f0f0f;
+}
 
 a {
-  color: #000;
+  color: #0f0f0f;
 }
 
-.header {
-  background: #fff;
-  color: #000;
-  height: 500px;
-  padding: 30px 30px 30px;
+mark {
+  background-color: #aeb3f7;
 }
 
-.header h1 {
-  font-size: 50px;
-  }
+.topnav {
+  overflow: hidden;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
 
-.assignment {
-  font-size: 12px;
-  line-height: 24px;
-  font-family: 'helvetica', 'arial', 'sans';
-  padding: 20px 20px 20px 30px;
-  width: 250px;
-  height: 350px;
+.topnav a {
+  float: right;
+  display: block;
+  color: #0f0f0f;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.main {
+  margin-top: 30px;
+}
+
+.index-content {
+  margin-top: 30px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.hw-content {
+  margin-top: 30px;
+  text-align: left;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+#button_purp:hover {
+  background-color: #aeb3f7;
+}
+
+#centered {
+  text-align: center;
+}
+
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -30px;
+  visibility: hidden;
+}
+
+/* Configuring all pictures to change when hovered over */
+
+/* .picture class for pictures in general. Use as a template */
+.picture {
+  position: relative;
+  display: inline-block;
+}
+
+.picture .img-top {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.picture:hover .img-top {
+  display: inline;
+}
+
+/* .portrait class is used specifically for portrait on home page */
+.portrait {
   float: left;
-}
-
-.assignment a {
-    color: #000;
-    text-decoration: none;
-}
-
-.assignment a:hover {
-  background: #F06;
-  color: #F06;
-  text-decoration: none;
+  margin-left: 10%;
+  margin-right: 1%;
+  position: relative;
+  width: 250px;
+  height: auto;
+  max-width: 100%;
+  border: 2px solid #aeb3f7;
 }
 
 
+hr {
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-align: center;
+  color: #0f0f0f;
+}
+hr:after {
+  font-weight: bolder;
+  content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \a ************************************************************************************************************************************************************************************";
+  position: relative;
+  top: -0.5em;
+  white-space: pre;
+}
+
+#fig {
+  width: 90%;
+  height: auto;
+}
+
+
+/* .fig_img class is used for all images used as a <figure> */
+.fig_img {
+  position: relative;
+  display: inline-block;
+  width: 252px;
+  height: auto;
+  max-width: 100%;
+}
+
+.fig_img .fig_img-top {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 252px;
+  height: auto;
+  max-width: 100%;
+}
+
+.fig_img:hover .fig_img-top {
+  display: inline;
+}
+
+/* .header class used for all header images at tops of project pages */
+.header_img {
+  position: relative;
+  display: inline-block;
+  width: 504px;
+  height: auto;
+  max-width: 100%;
+}
+
+.header_img .header_img-top {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 504px;
+  height: auto;
+  max-width: 100%;
+}
+
+.header_img:hover .header_img-top {
+  display: inline;
+}
+
+p {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+pre code {
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #999;
+  display: block;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+figure {
+  display: inline-block;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 2px solid #aeb3f7;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+}
+
+th, td {
+  padding: 10px;
+}
+
+ul, li {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-left: 0;
+}
+
+#python_code {
+  text-align: left;
+  background: #ffffff;
+  margin: auto;
+  overflow: auto;
+  width: 700px;
+  border: solid gray;
+  border-width: .1em .1em .1em .8em;
+  padding: .2em .6em;
+}
+
+#topic {
+  width: 300px;
+}
+
+xmp {
+  border: 1px solid black;
+  background: #1f1f1f;
+  color: #f1f1f1;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* Style the footer */
 .footer {
-    width: 1100px;
-    float: left;
-    padding: 300px 0px 30px 30px;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 10px;
 }
 
-.widebody {
-    width: 800px;
-    padding: 0px 30px 30px 30px;
-}
-
-.widebody a {
-}
-
-.widebody a:hover {
-  background: #F06;
-  color: #FFF;
+/* Style all font awesome icons */
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
   text-decoration: none;
+  background: #606060;
+  color: white;
+}
+
+/* Add a hover effect for each brand */
+.fa-envelope-square:hover {
+  background: #a31f34; /* MIT Red */
+}
+
+.fa-globe:hover {
+  background: #d0d000; /* Facebook Blue */
+}
+
+.fa-linkedin:hover {
+  background: #0072b1; /* LinkedIn Blue */
+}
+
+.fa-facebook:hover {
+  background: #39569c; /* Facebook Blue */
+}
+
+.fa-twitter:hover {
+  background: #26A7de; /* Twitter Blue */
 }
 
