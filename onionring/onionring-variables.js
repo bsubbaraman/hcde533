@@ -20,9 +20,9 @@ var ringName = 'uw hcde533 digital fabrication';
 var ringID = 'uw-hcde533';
 
 //should the widget include a link to an index page?
-var useIndex = false;
+var useIndex = true;
 //the full URL of the index page. if you're not using one, you don't have to specify anything here
-var indexPage = 'https://example.com/index.html';
+var indexPage = 'https://bsubbaraman.github.io/hcde533/onionring/hcde533-onion-index.html';
 
 //should the widget include a random button?
 var useRandom = true;
