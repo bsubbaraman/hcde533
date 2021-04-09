@@ -9,6 +9,7 @@
 var sites = [
 'https://bsubbaraman.github.io/hcde533/',
 'https://example.com/',
+'https://bsubbaraman.github.io',
 ];
 
 //the name of the ring
