@@ -11,18 +11,104 @@
 </head>
 
 <body>
+  <script src="../../js/stl_viewer/stl_viewer.min.js"></script> 
 
-<a class="anchor" id="top"></a>
-<div class="topnav">
-  <a id="button_purp" href="../../index.html#top">Home</a>
-</div>
+  <a class="anchor" id="top"></a>
+  <div class="topnav">
+    <a id="button_purp" href="../../index.html#top">Home</a>
+  </div>
 
-<div class="hw-content">
-  <h2><mark>this is a homework template</mark></h2>
+  <div class="hw-content">
+    <h2><mark>cookie cutters!</mark></h2>
+    Over spring break I was playing Paper Mario, so I made cookie cutters of the main trio from the game: Mario, Bo-bomb, and Olivia!<br/>
+    <img src="./source_images/mario-olivia-bobomb.png" width=25%> </img> <br/><br/><br/>
+    <hr>
 
-  lots of cool digital fabrication will be here!
+    <h2> process! </h2>
+    1. Source photos <br/>
+    2. Photo treatment <br/>
+    &nbsp;&nbsp; - GIMP: desaturate, increase contrast, threshold. I also used the fill/paintbrush tools to fill in some features that weren't needed (like the buttons on Mario's overalls) <br/>
+    &nbsp;&nbsp; - Inkscape: trace bitmap <br/>
+    3. 3D Model <br/>
+    &nbsp;&nbsp; - clean up some stray curves, extrude surfaces<br/>
+    <br/><br/>
+    <hr>
+    <h2>results!</h2>
+    <table style="margin-left: 0px;">
+      <tr>
+        <th class="fill-cell" width="25%">~</th>
+        <th width="25%">mario!</th>
+        <th width="25%">olivia!</th>
+        <th width="25%">bo-bomb!</th>
+      </tr>
+      <tr>
+        <td> original image <br/> 
+          [<a href="./source_images/paper-mario.png">mario</a>,
+          <a href="./source_images/olivia.png">olivia</a>,
+          <a href="./source_images/bo-bomb.png">bo-bomb</a>]
+        </td>
+        <td> <img class="thumb" src="./source_images/paper-mario.png"> </img> </td>
+        <td> <img class="thumb" src="./source_images/olivia.png"> </td>
+        <td> <img class="thumb" src="./source_images/bo-bomb.png"> </td>
+      </tr>
 
-</div>
+      <tr>
+        <td>svg <br/>
+          [<a href="./svg/paper-mario.svg">mario</a>,
+          <a href="./svg/olivia.svg">olivia</a>,
+          <a href="./svg/bo-bomb.svg">bo-bomb</a>]
+        </td>
+        <td> <img class="thumb" src="./svg/paper-mario.svg"> </img> </td>
+        <td> <img class="thumb" src="./svg/olivia.svg"> </td>
+        <td> <img class="thumb" src="./svg/bo-bomb.svg"> </td>
+      </tr>
+
+      <tr>
+        <td>3dm <br/>
+          [<a href="./rhino/paper-mario.3dm">mario</a>,
+          <a href="./rhino/olivia.3dm">olivia</a>,
+          <a href="./rhino/bo-bomb.3dm">bo-bomb</a>]
+        </td>
+        <td> <img class="thumb" src="./rhino/screencaps/mario_rhino.png"> </img> </td>
+        <td> <img class="thumb" src="./rhino/screencaps/olivia_rhino.png"> </td>
+        <td> <img class="thumb" src="./rhino/screencaps/bobomb_rhino.png"> </td>
+      </tr>
+
+      <tr>
+        <td>stl* <br/>
+          [<a href="./stl/paper-mario.stl">mario</a>,
+          <a href="./stl/olivia.stl">olivia</a>,
+          <a href="./stl/bo-bomb.stl">bo-bomb</a>]
+        </td>
+        <td> <div id="stl_1" style="width: 300px; height: 300px;"></div> </td>
+        <td> <div id="stl_2" style="width: 300px; height: 300px;"></div> </td>
+        <td> <div id="stl_3" style="width: 300px; height: 300px;"></div> </td>
+      </tr>
+    </table>
+    * using this <a href="https://github.com/omrips/viewstl">stl viewer plugin</a> which uses three.js to load stl files!
+
+    <script>
+      var stl_viewer=new StlViewer(document.getElementById("stl_1"), { models: [ {id:0, filename:"../../assignments/a1/stl/paper-mario.stl"} ] }); 
+      var stl_viewer2=new StlViewer(document.getElementById("stl_2"), { models: [ {id:0, filename:"../../assignments/a1/stl/olivia.stl"} ] }); 
+      var stl_viewer3=new StlViewer(document.getElementById("stl_3"), { models: [ {id:0, filename:"../../assignments/a1/stl/bo-bomb.stl"} ] }); 
+    </script>
+    <br/><br/><br/>
+
+    <hr>
+
+    <h2> notes! </h2>
+    I found Rhino really fun to play around in! A dump of miscellaneous notes & questions for my own long-term memory: <br/>
+    &nbsp;&nbsp; - i get an <a href="./svg/dxf-error.txt">error</a> when saving as a .dxf from inkscape that i need to follow up on still. used svg for now. <br/>
+    &nbsp;&nbsp; - sometimes my svg is grouped when imported, have to ungroup to access control points <br/>
+    &nbsp;&nbsp; - shift + right-click'n'drag to pan in perspective viewer <br/>
+    &nbsp;&nbsp; - sometimes when offsetting, the resulting curve isn't closed; i just select & rebuild to fix. is this okay/is it bad practice to rebuild things willy-nilly?
+
+
+
+
+    
+
+  </div>
 </body>
 </html>
 

@@ -7,11 +7,17 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   color: #0f0f0f;
+  margin-bottom: 5%;
 }
 
 a {
   color: #0f0f0f;
 }
+
+a:hover{
+  background-color: #aeb3f7;
+}
+
 
 mark {
   background-color: #aeb3f7;
@@ -48,6 +54,7 @@ mark {
 
 .hw-content {
   margin-top: 30px;
+  margin-left: 1%;
   text-align: left;
   background-color: #ffffff;
   padding: 10px;
@@ -87,6 +94,13 @@ a.anchor {
 
 .picture:hover .img-top {
   display: inline;
+}
+
+.thumb {
+    object-fit: cover;
+    width:300px;
+    height:300px;
+    background: rgba(0, 0, 0, 0);
 }
 
 /* .portrait class is used specifically for portrait on home page */
@@ -201,6 +215,10 @@ table, th, td {
 
 th, td {
   padding: 10px;
+}
+
+.fill-cell {
+  background-color: #aeb3f7;
 }
 
 ul, li {
