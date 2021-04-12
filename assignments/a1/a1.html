@@ -25,12 +25,21 @@
     <hr>
 
     <h2> process! </h2>
-    1. Source photos <br/>
-    2. Photo treatment <br/>
-    &nbsp;&nbsp; - GIMP: desaturate, increase contrast, threshold. also used the fill/paintbrush tools to fill in some features that weren't needed like the buttons on Mario's overalls, or erase e.g. Olivia's creases.  <br/>
-    &nbsp;&nbsp; - Inkscape: trace bitmap <br/>
-    3. 3D Model <br/>
-    &nbsp;&nbsp; - clean up some stray curves, extrude surfaces. I ended up tracing a simpler version of the 'M' on Mario's hat using a polyline so that it would be a simpler to cut out & remove with a cookie cutter. <br/>
+    <ol>
+    <li>Source photos</li>
+    <ul><li>I was pretty unsure what level of detail would be reasonable to maintain through the editing & vectorizing process, but figured these characters were recognizable enough from their silhouette anyways in the scenario that I had to scrap all interior features.</li></ul>
+    <li>Photo treatment</li>
+    <ul>
+      <li>GIMP: desaturate, increase contrast, threshold. I also used the fill/paintbrush tools to fill in some features that weren't needed like the buttons on Mario's overalls, or erase e.g. Olivia's creases.</li>
+      <li>Inkscape: trace bitmap</li>
+    </ul>
+    <li>3D Model</li>
+    <ul>
+      <li>General clean up: e.g. I ended up tracing a simpler version of the 'M' on Mario's hat using a polyline so that it would be a simpler to cut out & remove with a cookie cutter.</li>
+      <li>Offset: I offset the outer curves by 0.1" (2.54 mm), but for finer interior features like Mario's face that was too large, so I went down to 0.05". Since the nozzle on our Ender 3 is 0.4mm, this seemed like a plausible size, but I'm not sure if this is too thin in practice.</li>
+      <li>Extrude: I made the cookie cutters 1 inch tall with a half inch base to support interior features; but for Bo-bomb, I realized I opened Rhino in mm units, so everything is scaled ~25x to convert mm to inches. Mario's eyes are just posts that I will squash, since they were too small to offset & extrude.</li>
+    </ul>
+   </ol>
     <br/><br/>
     <hr>
     <h2>results!</h2>
@@ -85,7 +94,7 @@
         <td> <div id="stl_3" style="width: 300px; height: 300px;"></div> </td>
       </tr>
     </table>
-    * using this <a href="https://github.com/omrips/viewstl">stl viewer plugin</a> which uses three.js to load stl files!
+    * using this <a href="https://github.com/omrips/viewstl">stl viewer plugin</a> which uses three.js to load stl files! it's kinda slow to load, but also kinda fun to orbit the stl in browser.
 
     <script>
       var stl_viewer=new StlViewer(document.getElementById("stl_1"), { models: [ {id:0, filename:"../../assignments/a1/stl/paper-mario.stl"} ] }); 

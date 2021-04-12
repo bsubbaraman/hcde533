@@ -54,7 +54,8 @@ mark {
 
 .hw-content {
   margin-top: 30px;
-  margin-left: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: left;
   background-color: #ffffff;
   padding: 10px;
@@ -75,6 +76,8 @@ a.anchor {
   top: -30px;
   visibility: hidden;
 }
+
+ul, ol { padding-left: 1.2em; }
 
 /* Configuring all pictures to change when hovered over */
 
@@ -221,11 +224,11 @@ th, td {
   background-color: #aeb3f7;
 }
 
-ul, li {
+/* ul, li {
   margin-left: 5%;
   margin-right: 5%;
   padding-left: 0;
-}
+} */
 
 #python_code {
   text-align: left;
