@@ -69,6 +69,11 @@ mark {
   text-align: center;
 }
 
+#uw-hcde533 { 
+  float: left; 
+  margin-left: -100px;
+};
+
 
 a.anchor {
   display: block;
