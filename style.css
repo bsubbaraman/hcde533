@@ -70,8 +70,7 @@ mark {
 }
 
 #uw-hcde533 { 
-  float: left; 
-  margin-left: -100px;
+  text-align: center;
 };
 
 
@@ -257,43 +256,3 @@ xmp {
   margin-left: 10%;
   margin-right: 10%;
 }
-
-/* Style the footer */
-.footer {
-  text-align: center;
-  background-color: #f1f1f1;
-  padding: 10px;
-}
-
-/* Style all font awesome icons */
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  background: #606060;
-  color: white;
-}
-
-/* Add a hover effect for each brand */
-.fa-envelope-square:hover {
-  background: #a31f34; /* MIT Red */
-}
-
-.fa-globe:hover {
-  background: #d0d000; /* Facebook Blue */
-}
-
-.fa-linkedin:hover {
-  background: #0072b1; /* LinkedIn Blue */
-}
-
-.fa-facebook:hover {
-  background: #39569c; /* Facebook Blue */
-}
-
-.fa-twitter:hover {
-  background: #26A7de; /* Twitter Blue */
-}
-
