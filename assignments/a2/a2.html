@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blair Subbaraman</title>
+<title>digifab</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" type="image/jpg" href="../images/favicon_j.png"/>
@@ -18,9 +18,367 @@
 </div>
 
 <div class="hw-content">
-  <h2><mark>this is a homework template</mark></h2>
+  <h2><mark>cubes, tubes, cylinders & calipers!</mark></h2>
+  <span class="post-meta"> last edited: 2021.04.19 </span>
+  <ul>
+    <li> <a href="#assembly"> assembly </a></li>
+    <li> <a href="#results"> results </a></li>
+    <ul>
+      <li> <a href="#bigtable"> Big Table of Measurements™ </a></li>
+      <li> <a href="#tolerance"> tolerance test cube </a></li>
+      <li> <a href="#stress"> stress tests </a></li>
+    </ul>
+    <li> <a href="#notes"> notes </a></li>
+    <ul>
+      <li> <a href="#esteps"> estep calibration </a></li>
+      <li> <a href="#flow"> flow calibration </a></li>
+    </ul>
+  </ul>
 
-  lots of cool digital fabrication will be here!
+  <h2 id="assembly"> assembly! </h2>
+  Assembly took me ~2.5 hrs. After getting my Ender I watched a  <a href="https://www.youtube.com/watch?v=T-Z3GmM20JM">parts tour & assembly</a> video to get a sense of what I was in for. 
+  The video linked says the instructions included in the box are straightforward if you're "mechanically minded"; this may well be true, but I knew that other videos would likely have tips & tricks to ensure better initial assembly (like <a href="https://www.youtube.com/watch?v=ibsOYzXduYc">this one</a> & <a href="https://www.youtube.com/watch?v=me8Qrwh907Q"> this one</a>,
+  which I found based off view count/likes). I watched it through once on 2x speed to get a sense of scale, then started.
+
+  <br/><br/>
+  <div class="center">
+    <img class="fig_img" src="./images/assembly.jpg"><br/>
+    <span class="post-meta">things started to look like a printer very quickly! </span>
+  </div>
+  <br/><br/>
+
+  The most frustrating parts I encountered were: getting the Z-stop switch to
+  attach firmly using the T nuts (which became easy once I realized I should keep the T nuts <i>riiight</i> on the end of the screw) and getting the horizontal extrusion of the X axis perfectly
+  straight; this is a step that is not in the assembly instructions but was discussed in the video I built along with. After feeding the X axis extrusion through the Z-leadscrew, I found that the 
+  right-hand side was just over a millimeter higher than the left. To adjust, I removed the extrusion and adjusted the tightness of the M4x16 bolts which attach the carriagge to the extrusion.
+  This took a couple of iterations to get right, but in the end I got both sides lined up. One of the most helpful tips I found online was in tightening the X-axis belt. Using only my hand to push the tensioner, I couldn't get it as tight as I wanted (and nowhere near as tight as
+  the Y-axis belt that came pre-attached on my Ender). But, using e.g. an allen wrench to get some more leverage:
+
+  <br/><br/>
+  <div class="center">
+    <img class="fig_img" src="./images/tightenX.jpg"> <br/>
+    <span class="post-meta">this got me a nice 'twang' in the belt! </span>
+  </div>
+  <br/><br/>
+
+  The belt was significantly more taught after this, as evidenced by the little twang I could get from snapping it. The last edit I had to make was to move the Z-stop switch up to accomodate
+  for the glass bed I have. Then I fired things up and auto-homed for the first time on the new printer :)
+  
+  <br/><br/><br/>
+  <hr>
+  <h2 id="results"> results! </h2>
+  Below are the results of the test prints. A note that the measurements varied slightly when taken at different locations on the printed object; the numbers documented
+  here are 'somewhere in the middle', but I'm more careful about taking an average for the final cube with a hole in it.
+  <br/><br/>
+  <table id="bigtable">
+    <tr>
+      <th colspan="12">thing!</th>
+      <th colspan="36">dimensions! (± 0.005 mm)</th>
+      <th colspan="24"> print time!</th>
+      <th colspan="12" class="fill-cell"></th>
+    </tr>
+
+    <tr>
+      <th colspan="12">cubes!</th>
+      <th colspan="12">width! (mm)</th>
+      <th colspan="12">height! (mm)</th>
+      <th colspan="12">depth! (mm)</th>
+      <th colspan="12">estimated! (mins)</th>
+      <th colspan="12">actual! (mins)</th>
+      <th colspan="12">material estimation! (g)</th>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 20mm low quality cube w/ brim</td>
+      <td colspan="12">  20.22</td>
+      <td colspan="12"> 20.02 </td>
+      <td colspan="12"> 20.20 </td>
+      <td colspan="12"> 24 </td>
+      <td colspan="12"> 24 </td>
+      <td colspan="12"> 4 </td>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 20mm standard quality cube w/ brim 
+      </td>
+      <td colspan="12"> 19.65</td>
+      <td colspan="12"> 20.07 </td>
+      <td colspan="12"> 20.10 </td>
+      <td colspan="12"> 27 </td>
+      <td colspan="12"> 25 </td>
+      <td colspan="12"> 4 </td>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 20mm super quality cube w/ brim <br/> 
+      </td>
+      <td colspan="12"> 19.72</td>
+      <td colspan="12"> 20.06 </td>
+      <td colspan="12"> 19.99 </td>
+      <td colspan="12"> 55 </td>
+      <td colspan="12"> 55 </td>
+      <td colspan="12"> 4 </td>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 20mm low quality cube w/ concentric top & bottom 
+      </td>
+      <td colspan="12"> 19.88 </td>
+      <td colspan="12"> 20.05 </td>
+      <td colspan="12"> 19.75 </td>
+      <td colspan="12"> 24 </td>
+      <td colspan="12"> 27 </td>
+      <td colspan="12"> 4 </td>
+    </tr>
+
+    <tr>
+      <th colspan="12">tubes!
+      </th>
+      <th colspan="12">diameter! (mm)</th>
+      <th colspan="12">height! (mm)</th>
+      <th colspan="12">wall thickness! (mm)</th>
+      <th colspan="12">estimated! (mins)</th>
+      <th colspan="12">actual! (mins)</th>
+      <th colspan="12">material estimation! (g)</th>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 30mm standard quality tube w/ single extrusion wall thickness
+      </td>
+      <td colspan="12"> 29.88</td>
+      <td colspan="12"> 30.07 </td>
+      <td colspan="12"> 0.5-0.9 </td>
+      <td colspan="12"> 30 </td>
+      <td colspan="12"> 35 </td>
+      <td colspan="12"> 3 </td>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 30mm standard quality tube w/ double extrusion wall thickness & random z-seam alignment
+      </td>
+      <td colspan="12"> 29.54</td>
+      <td colspan="12"> 30.08 </td>
+      <td colspan="12"> 0.80 - 1.01 </td>
+      <td colspan="12"> 30 </td>
+      <td colspan="12"> 36 </td>
+      <td colspan="12"> 3 </td>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 30mm standard quality cylinder* with special mode "spiralize outer contour"  <br/> 
+        <span class="post-meta">*spiralize outer contour makes a cup! so i've grouped it under 'tubes' :) </span> 
+     
+      </td>
+      <td colspan="12"> 29.28</td>
+      <td colspan="12"> 30.68 </td>
+      <td colspan="12"> 0.53 </td>
+      <td colspan="12"> 36 </td>
+      <td colspan="12"> 37 </td>
+      <td colspan="12"> 2 </td>
+    </tr>
+
+    <tr>
+      <th colspan="12">cylinders!</th>
+      <th colspan="18">diameter! (mm)</th>
+      <th colspan="18"> height! (mm)</th>
+      <th colspan="12">estimated! (mins)</th>
+      <th colspan="12">actual! (mins)</th>
+      <th colspan="12">material estimation! (g)</th>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 30mm standard quality cylinder exported w/ 0.1mm tolerance
+      </td>
+      <td colspan="18"> 29.50</td>
+      <td colspan="18"> 30.03 </td>
+      <td colspan="12"> 48 </td>
+      <td colspan="12"> 49 </td>
+      <td colspan="12"> 6 </td>
+    </tr>
+
+    <tr>
+      <td colspan="12"> 30mm standard quality cylinder exported w/ 0.001mm tolerance
+      </td>
+      <td colspan="18"> 30.15</td>
+      <td colspan="18"> 30.05 </td>
+      <td colspan="12"> 48 </td>
+      <td colspan="12"> 49 </td>
+      <td colspan="12"> 6 </td>
+    </tr>
+
+
+    <tr>
+      <td colspan="12"> 30mm standard quality cylinder printed on its side with supports on
+      </td>
+      <td colspan="18"> 29.93</td>
+      <td colspan="18"> 29.94 </td>
+      <td colspan="12"> 60 </td>
+      <td colspan="12"> 59 </td>
+      <td colspan="12"> 6 </td>
+    </tr>
+
+  </table>
+
+  <br/>
+
+  <h3 id="tolerance"> tolerance test cube! </h3>
+  Following the test prints above, I noticed my width & depth were consistently short, so I tightened up the belts to make sure I wasn't skipping any steps. I also noted that my cylinder wall
+  thickness was significantly too big, so I <a href="#notes">calibrated my extruder steps and flow rate</a> as well. It took me two prints to get the following cube within tolerance using standard quality. After the first print,
+  the depth measurements were still short (~19.75mm, 98.5% of expected value) so I scaled that axis slightly to 20.25mm to expect .9875*20.25=20.0mm. I report 3 measurements per side 
+  (bottom/middle/top for width & depth, front/middle/back for height) and for the inner hole diameter (top/middle/bottom of hole). For the diameter measurement, I rotate the calipers around a bit to ensure I'm actually measuring the diameter and not some shorter chord.
+
+  <br/><br/>
+  <table>
+    <tr>
+      <th class="fill-cell"></th>
+      <th>measurement 1 (mm)</th>
+      <th>measurement 2 (mm)</th>
+      <th>measurement 3 (mm)</th>
+      <th> average (mm)</th>
+    </tr>
+
+    <tr>
+      <th > width </th>
+      <td> 19.92</td>
+      <td> 19.94 </td>
+      <td> 19.95 </td>
+      <td> 19.94 </td>
+    </tr>
+
+    <tr>
+      <th > depth </th>
+      <td> 20.01</td>
+      <td> 20.01 </td>
+      <td> 20.00 </td>
+      <td> 20.01 </td>
+    </tr>
+
+    <tr>
+      <th > height </th>
+      <td> 19.93</td>
+      <td> 19.99 </td>
+      <td> 19.93 </td>
+      <td> 19.95 </td>
+    </tr>
+
+    <tr>
+      <th> diameter </th>
+      <td> 9.96 </td>
+      <td> 9.98 </td>
+      <td> 9.90 </td>
+      <td> 9.95 </td>
+    </tr>
+
+  </table>
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/width.jpg">
+    <img class="fig_img" src="./images/depth.jpg">
+    <img class="fig_img" src="./images/height.jpg">
+    <img class="fig_img" src="./images/diameter.jpg"> <br/>
+  <span class="post-meta">a 'best of' measurements gallery </span>
+  </div>
+  <br/><br/>
+
+  <div class="center">
+    <img class="fig_img" src="./images/all.jpg"> <br/>
+    <span class="post-meta">all of my new friends </span>
+  </div>
+  <br/><br/>
+
+  <h3 id="stress"> stress tests! </h3>
+  I printed a couple stress tests to check my calibration under various scenarios. First, I printed the canonical 'benchy' to keep as a reference for future use:
+
+  <br/><br/>
+
+  <div class="center">
+    <img class="fig_img" src="./images/benchy2.jpg"><br/>
+    <span class="post-meta"><a href="http://www.3dbenchy.com/">benchy!</a> </span>
+  </div>  
+  <br/><br/>
+
+  I also printed an <a href="https://www.thingiverse.com/thing:2806295"> 'all-in-one' test</a> that I found while watching YouTube videos, which includes overhang, bridging & stringing tests:
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/overhang1.jpg">
+    <img class="fig_img" src="./images/overhang2.jpg">
+  </div>
+  
+  <div class="center">
+    <img class="fig_img center" src="./images/overhang3.jpg"><br/>
+    <span class="post-meta center"> all-in-one test print </span>
+  </div>
+  <br/><br/>
+
+  I'm pretty happy with how it turned out! (The results seemed comparable with the YouTuber I was watching in any case :). I was pleasantly surprised at the overhang tests which only starts to deteriorate at ~60*, but even then
+  it looks prety good from the front all the way through 80*. The bridging tests all passed, and it was only the stringing test that I should probably work more on- there's likely some retraction settings to change or maybe a lower 
+  nozzle temperature. So, I went ahead and printed a temperature tower; Cura has a 'calibration shapes' extension that includes the temp tower as well as a post-processing script to automagically generate the gcode for the temperature
+  changes:
+  <br/><br/>
+
+  <div class="center">
+    <img class="fig_img" src="./images/temptower.jpg"> <br/>
+    <span class="post-meta">it... all looks pretty similar </span>
+  </div>
+  <br/><br/>
+
+  I ran this print while I was cooking, and it looks like something happened towards the top because there should have been a complete '190*' section. But, to my eye, everything from 220 to 190 looks relatively similar to my eye (there's
+  no major stringing, in any case). The solutech filament I'm using says that it works best from 190-210*, so I'll stick with my default setting of 200* for now.
+
+  <br/><br/><br/>
+  <hr>
+  <h2 id="notes"> notes! </h2>
+  <h3>extruder calibration</h3>
+  I noticed when printing my cylinder that the wall thickness was considerably bigger than the expected 0.4mm for a single wall extrusion. So, more calibration! I followed <a href="https://www.youtube.com/watch?v=xzQjtWhg9VE"> this video</a><div class="">
+  <br/>
+  <b id="esteps">part 1: e-steps</b><br/><br/>
+  <i>procedure:</i>
+  <ul>
+    <li> heat nozzle to printing temp (200* is what I'm using for my filament)</li>
+    <li> measure filament 100mm back from extruder entrance using calipers</li>
+    <li> make an additional another mark 10mm back (i.e. 110mm from extruder entrance). This is used in the case that we over-extrude in the following steps.</li>
+    <li> from the printer interface, select motion-->extruder-->100mm to run 100mm of filament through the extruder </li>
+    <li> measure the distance from the extruder entrance to the mark made earlier. i measured 10.5mm, meaning i under-extruded by ~10.5mm - only 89.5mm of filament went through the extruder</li>
+    <li> calculate the new e-step value (the current e-step value can be found in the motion menu, default is 93 steps/mm). To calculate: <br/>
+      expected length (mm) * current steps/mm = current steps --> current steps/actual length(mm) = new steps/mm <br/>
+      for me, this turned out to be: 100mm * 93 steps/mm = 9300 steps --> 9300 steps/89.5mm = <mark>104.0 steps/mm</mark> as my new value. 
+    </li> 
+    <li> repeat from beginning again to confirm the new estep value gives desired results
+  </ul>
+
+  The results of my changes are shown in the images below; my new value brings the 100mm mark directly to the extruder entrance.
+ 
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/estep_before.jpg">
+    <img class="fig_img" src="./images/esteps_after.jpg"> <br/>
+  <span class="post-meta">before calibration i was under-extruding (left), a new estep value of 104 step/mm remedies this (right) </span>
+  </div>
+  <br/><br/>
+  </div>
+
+  <b id="flow"> part 2: flow calibration</b><br/><br/>
+  <i>procedure:</i>
+  <ul>
+    <li> print a 20 mm cube with an open top; wall thickness = 0.8mm, wall count = 2, flow = 100%</li>
+    <li> measure the resulting wall thickness, taking 2 measurements per side (8 total) and average. my average came out to 0.92mm</li>
+    <li> calculate new flow rate, where desired thickness/actual thickness = flow rate. <br/>
+          for me, this came out to: 0.8mm/0.92mm = <mark>86.9%</mark></li>
+    <li> print again using new flow rate & measure</li>
+  </ul>
+
+  I had an average thickness of 0.92mm at 100% flow rate. After adjusting to 86%, I had an average thickness of 0.78mm.
+
+  <br/><br/>
+
+  <div class="gallery">
+    <img class="fig_img" src="./images/flowbefore.JPG">
+    <img class="fig_img" src="./images/flowafter.JPG"> <br/>
+  <span class="post-meta">before adjusting flow rate my walls were too thick (left), a new estep value of 86% remedies this (right) </span>
+  </div>
+  
+  <br/><br/>
+
 
 </div>
 </body>

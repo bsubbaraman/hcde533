@@ -25,7 +25,7 @@ mark {
 
 .topnav {
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: transparent #ffffff;
   position: fixed;
   top: 0;
   width: 100%;
@@ -54,11 +54,20 @@ mark {
 
 .hw-content {
   margin-top: 30px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
   text-align: left;
   background-color: #ffffff;
-  padding: 10px;
+  /* padding: 10px; */
+}
+
+.post-content {
+  max-width: calc(800px - (30px * 2));
+  margin-right: auto;
+  margin-left: auto;
+  margin-top:100px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 #button_purp:hover {
@@ -67,6 +76,15 @@ mark {
 
 #centered {
   text-align: center;
+}
+
+.center {
+  display: block;
+  /* margin-left: 40%; */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  /* width: 30%; */
 }
 
 #uw-hcde533 { 
@@ -103,6 +121,16 @@ ul, ol { padding-left: 1.2em; }
   display: inline;
 }
 
+.gallery {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  /* margin-left: 40%; */
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 100%; 
+}
+
 .thumb {
     object-fit: cover;
     width:300px;
@@ -133,7 +161,8 @@ hr {
 }
 hr:after {
   font-weight: bolder;
-  content: "•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•";
+  content: "•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•";
+  /* "•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•"; */
   /* content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \a ************************************************************************************************************************************************************************************"; */
   position: relative;
   top: -0.5em;
@@ -150,9 +179,10 @@ hr:after {
 .fig_img {
   position: relative;
   display: inline-block;
-  width: 252px;
+  width: 300px;
   height: auto;
   max-width: 100%;
+  border: 2px solid #aeb3f7;
 }
 
 .fig_img .fig_img-top {
@@ -227,6 +257,12 @@ th, td {
 .fill-cell {
   background-color: #aeb3f7;
 }
+
+.post-meta {
+  font-size: 14px;
+  color: #828282;
+}
+
 
 /* ul, li {
   margin-left: 5%;
