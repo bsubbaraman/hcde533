@@ -18,10 +18,112 @@
 </div>
 
 <div class="hw-content">
-  <h2><mark>this is a homework template</mark></h2>
+  <h2><mark>clips & nests!</mark></h2>
+  <span class="post-meta"> last edited: 2021.04.27 </span>
 
-  lots of cool digital fabrication will be here!
+  <ul>
+    <li> <a href="#clips"> clips </a></li>
+    <li> <a href="#nests"> nests </a></li>
+    <li> <a href="#files"> files </a></li>
+  </ul>
 
+  <h2 id="clips"> clips! </h2>
+  My initial idea for my clips was to work them into a polyhedra construction kit. I started with a cube! Here's the Grasshopper definition (which I maintain should be called a 'chirp'):
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/clip-gh.png">
+    <img class="fig_img" src="./images/clip-rhino.png">
+    <span class="post-meta center"> grasshopper definition on the left produces the geometry on the right </span>
+  </div>
+  <br/><br/>
+
+  Variables such as the clip size and slot width/depth/number/position can be varied parametrically. My cardboard measured 3.5mm; I could compress it to ~1.5mm with my calipers and it would subsequently 
+  expand back to ~2.5mm. For a tight fit, I made the slot width 2mm. I made the decision to make the slot width and clip height the same so that clips could attach to one another, though this could 
+  certainly be split into two variables. With the clips I made this cube, also being used as a pen holder:
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/pen_holder.jpg">
+    <img class="fig_img" src="./images/cliptoclip.jpg">
+    <span class="post-meta center"> a pen holder (left), clips fit together for 90* rotations (right) </span>
+  </div>
+  <br/><br/>
+
+  And a brief demonstration of the connection strength. Vigor evidenced by blurry motion.
+
+  <br/><br/>
+  <div class="center">
+    <img class="fig_img center" src="./images/shake.gif"><br/>
+    <span class="post-meta center"> shakey </span>
+  </div>
+  <br/><br/>
+
+  Flexures are very fun and I hope to make more flexures with satisfying clips & snaps soon!
+
+  
+
+  <h2 id="nests"> nests! </h2>
+  For my nesting experiments I wanted to make something that could move right off the printer bed. I settled on a gyroscope-ish object; I thought it would be fun to experiment with printing supports that would be removed
+  through the objects motion, as with the small spindles that connect each ring. In my first test, I printed just 2 nested concentric rings with a cylinder protruding from the outer ring into a slightly larger hole in the inner 
+  ring. The result seemed reasonable, so I moved to a few rings! The grasshopper definition is below. The messy wires going down out of the image lead to some paths to automatically generate the cutting geometry & logic. This ended 
+  up distracting a bit too much given my limited Grasshopper skills, but I'd like to return to it once I'm a bit more comfortable!
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/gyro-gh.png">
+    <img class="fig_img" src="./images/demo.gif">
+    <span class="post-meta center"> the grasshopper definition, static + in action </span>
+  </div>
+  <br/><br/>
+
+  In my second iteration, I also moved from cylinders to cones to attach the rings. This gave the supports a bit more space to break free. The end result is fun to flick:
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/weeee.gif">
+    <span class="post-meta center"> weeeeee </span>
+  </div>
+  <br/><br/>
+
+  The rings will often move in lockstep with one another- however, I don't think this is because the axis is stuck but rather due to <a href="https://en.wikipedia.org/wiki/Gimbal_lock"> gimbal locking</a>. <a href="https://www.math.umd.edu/~immortal/MATH431/lecturenotes/ch_gimballock.pdf" >Theoretically,</a> 
+  in two orientations, we lose a degree of freedom. In practice, it happens for orientations around these two specific states, too. This gif from the wikipedia page on gimbal locking is illustrative:
+  
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/gimbal_lock.gif">
+  </div>
+  <br/><br/>
+
+  In any case, this was a fun experiment in printing nested, moving objects!
+
+
+
+  <br/><br/>
+  <h2 id="files"> relevant files! </h2>
+  <table>
+    <!-- <tr>
+      <th class="fill-cell"></th>
+      <th> clips </th>
+      <th> nests</th>
+    </tr> -->
+
+    <tr>
+      <th > clips </th>
+      <td> <a href="models/clip1.3dm"> 3dm </a> </td>
+      <td> <a href="models/first-clip.gh"> gh </a> </td>
+      <td> <a href="stl/CardboardClip.stl"> stl </a> </td>
+    </tr>
+
+    <tr>
+      <th > nests </th>
+      <td> <a href="models/gyroscope.3dm"> 3dm </a> </td>
+      <td> <a href="models/FullGyro.gh"> gh </a> </td>
+      <td> <a href="stl/gyroscope.stl"> stl </a> </td>
+    </tr>
+
+
+  </table>
+  <br/><br/>
 </div>
 </body>
 </html>
