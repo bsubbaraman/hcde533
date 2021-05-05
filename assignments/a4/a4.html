@@ -18,9 +18,109 @@
 </div>
 
 <div class="hw-content">
-  <h2><mark>this is a homework template</mark></h2>
+  <h2><mark>mesh & lamps!</mark></h2>
+  <span class="post-meta"> last edited: 2021.05.05 </span>
 
-  lots of cool digital fabrication will be here!
+  <ul>
+    <li> <a href="#mesh"> mesh </a></li>
+    <li> <a href="#lamp"> lamps </a></li>
+  </ul>
+
+  <h2 id="mesh"> mesh! </h2>
+  While I'm not at all a photographer, I'm interested in devices for 'seeing' (Golan Levin's <a href="https://github.com/golanlevin/ExperimentalCapture">experimental capture syllabus</a>
+  is a formative reference for me). While 3D scanning is common place nowadays, I thought it'd be a fun place to start to get a messy mesh. Despite
+  3D scanning being a fairly ordinary technology, my old iPhone doesn't have the TrueDepth sensors required :') so I stole my girlfriend's phone,
+  downloaded <a href="https://www.scandy.co/"> the Scandy app</a>, and got this stl. (I can only export one free stl from the app a week, so it was high stakes!
+  The future is a subscription service!)
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/raw-stl.png">
+    <span class="post-meta center"> a self-portrait </span>
+  </div>
+  <br/><br/>
+
+  Unsurprisingly, Rhino told me this was a 'bad mesh'. After running through the repair wizard there were still many naked edges. A recommendation
+  from Prof Nadya to use the Drape command worked well; then I cut the mesh with a box to flatten the back, and again on the bottom so the 
+  final print would be able to stand upright.
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/mesh_initial.png">
+    <img class="fig_img" src="./images/drape_surface.png">
+    <img class="fig_img" src="./images/surface_cut.png">
+    <span class="post-meta center"> from left to right: initial mesh, draped surface, surface cut </span>
+  </div>
+  <br/><br/>
+
+  Continuing a Mario theme from <a href="../a1/a1.html">assignment 1</a>, I decided to add Waluigi's mustache to my face. I found and stl online,
+  but it included a nose, too. I sliced off the two sides of the mustache and added them to my face. The final stl was a 'good mesh'! 
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/mustache-slice.png">
+    <img class="fig_img" src="./images/mustache_cut.png">
+    <span class="post-meta center"> virtual barber shop </span>
+  </div>
+  <br/><br/>
+
+  <div class="gallery">
+    <img class="fig_img" src="./images/final-mesh.png">
+    <img class="fig_img" src="./images/waluigi.jpg">
+    <span class="post-meta center"> the resemblance! </span>
+  </div>
+  <br/><br/>
+
+  I ended up with Blair and WaBlair. If I add some weight to them, they'd make for very strange bookends.
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/wablair.png">
+    <img class="fig_img" src="./images/wablair2.png">
+    <span class="post-meta center"> result! a small hole in my hair, because the original scan missed that part.  </span>
+  </div>
+  <br/><br/>
+
+  <h2 id="lamp"> lamp! (part 1) </h2>
+  I've decided two things about my lamp: I'd like it to be a pendant lamp that drops down from above, and I'd like to do something with shadowcasting. I think it would be fun to make a planetarium lamp with constellations as shadows.
+  I started with NASA deep star maps of the constellations in celestial coordinates. These images are "They are designed for spherical mapping in animation software".
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./svg/constellation_bounds_inverted.svg">
+    <img class="fig_img" src="./svg/constellations.svg">
+    <span class="post-meta center"> constellations and boundaries from <a href="https://svs.gsfc.nasa.gov/4851">NASA</a>  </span>
+  </div>
+  <br/><br/>
+
+  From here, I mostly just dorked around in Rhino thinking of what to do with this. It honestly took me a while to import the svg into Rhino properly- 
+  the constellation boundaries kept coming in with extra lines scattered about. I ended up fixing this by exporting an <i>optimized</i> svg from 
+  Inkscape. 
+
+  I messed around with spherical texture mapping to visualize things a bit better in Rhino:
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/rendering.gif">
+    <span class="post-meta center"> surprisingly fun to orbit a rendering</span>
+  </div>
+  <br/><br/>
+
+  I spent a good while learning how to draw polylines on spheres (click the OSnap 'On polysurface' option!), and how to extrude surfaces from these 
+  polylines (explode-->patch-->extrudesrf!). I also learned about the Flow, FlowAlong Surface, and Project commands while trying
+  to see the different ways I could manipulate the original svg. I probably should have thought more about the actual lamp design before figuring all these things out...
+  but it was a formative Rhino learning experience, I think.
+
+
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/teeny.JPG">
+    <span class="post-meta center"> for fun, I printed a teeny tiny version of the spherical constellations. it's pretty unrecognizable
+      and disgusting-looking... but fun to print something very small.s
+    </span>
+  </div>
+  <br/><br/>
+
+
 
 </div>
 </body>
