@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="../../style.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -18,11 +20,150 @@
 </div>
 
 <div class="hw-content">
-  <h2><mark>this is a homework template</mark></h2>
+  <h2><mark>stars & knots!</mark></h2>
+  <span class="post-meta"> last edited: 2021.05.10 </span>
 
-  lots of cool digital fabrication will be here!
+  <ul>
+    <li> <a href="#lamp"> lamp </a></li>
+    <ul>
+      <li> <a href="#i1">iteration 1</a></li>
+      <li> <a href="#i2">iteration 2</a></li>
+      <li> <a href="#i3">iteration 3</a></li>
+    </ul>
+    <li> <a href="#mold"> mold </a></li>
+  </ul>
 
+  <h2 id="lamp"> lamp! </h2>
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/lamp-close.png">
+  <img class="fig_img" src="./images/lamp-shadows.png">
+  <img class="fig_img" src="./images/lamp-far.jpeg">
+  <span class="post-meta center"> the final lamp! </span>
+</div>
+<br/><br/>
+
+  Following <a href="../a4/a4.html"> last week's assignment </a>, I continued with making a planetarium-inspired lamp. I learned a lot of things about Rhino & printing
+  more complex geometries in the process, and the final artifact kind of feels less than the sum of it's parts; but I definitely had a lot of fun working through this project. My lamp-making moved through
+  a couple design iterations:
+
+  <h3> iteration 1: PLA logging </h3>
+   At first, I planned to make a sphere with the constellation figures simply cut out of it; after spending some time modelling, I thought it would be much more visually interesting to inverse this idea
+   and have the constellations 'filled in'. To keep all the constellations connected, I could use the constellation boundaries; I've always appreciated the delicate branching structures based on natural simulation (such as <a href="https://n-e-r-v-o-u-s.com/shop/search_tags.php?search=lighting"> nervoussystem's work</a>),
+   and the constellation boundaries have a similar feel. This would, of course, result in geometry with many overhangs, thin structures, etc... Having never printed anything that required too much support structuring yet, 
+   I thought it would be worth trying to print.
+
+   <br/><br/>
+    <div class="gallery">
+    <img class="fig_img" src="./images/constellation_figures_4k.png">
+    <img class="fig_img" src="./images/constellation_bounds_4k.png">
+    <span class="post-meta center"> constellations and boundaries from <a href="https://svs.gsfc.nasa.gov/4851">NASA</a>  </span>
+  </div>
+  <br/><br/>
+
+  <br/><br/>
+    <div class="gallery">
+    <img class="fig_img" src="./svg/thicker_constellation_figures-inverted.svg">
+    <img class="fig_img" src="./svg/thickerbounds-inverted.svg">
+    <span class="post-meta center"> svgs after some processing</a>  </span>
+  </div>
+  <br/><br/>
+
+  Getting the constellations into Rhino was a bit of an unanticipated ordeal; I learned to export from Inkscape as an <i>optimized svg</i>, otherwise Rhino wouldn't be able to follow the lines exactly.
+  To get printable extrusions, I gaussian blurred & thresholded the original images a few times. After rebuilding curves to fix self intersections, I was just a FlowAlongSrf and a Split away from an stl.
+  I also wanted to get crisp shadows for my lamp, so bulb choice was important; a high intensity bulb - closer to a point-source of light - would cast better shadows. I couldn't find many good
+  reccomendations on the internet. In the end I got a T10 tubular filament LED bulb based on some reviews I read. Unfortunately, they don't cast a very good shadow :( but, they are a kind of
+  intersting shape. I changed my design to be cylindrical rather than spherical.
+
+  <br/><br/>
+    <div class="gallery">
+    <img class="fig_img" src="./images/sphere-stl.png">
+    <img class="fig_img" src="./images/cylinder-stl.png">
+    <span class="post-meta center"> test models for a spherical and cylindrical design</a>  </span>
+  </div>
+  <br/><br/>
+
+  I sliced it up with tree supports, and since it was going to take ~12 hours to print, I ran it overnight to see what it looked like in the morning. I ended up with an alright looking print (the poor infill
+  was due to slicer settings I'd been changing previously and were resolved by restoring defaults), but the tree supports were <b>not</b> fun to take off. I was delicate with it for a while, but eventually the thin 
+  structures snapped.
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/bad-cylinder.jpg">
+    <span class="post-meta center"> brute force didn't go so well </span>
+  </div>
+  <br/><br/>
+
+  I didn't have much time to work on it the next day anyways, so I tried splitting the cylinder in half and printing again, wondering if it'd be easier to take the support structures of just one half. It didn't work much
+  better. On to iteration 2!
+
+  <h3> iteration 2: dodecahedron't even think about it </h3>
+  Iteration 2 was a bit of a false start. Working from the idea to print 2 half cylinders, I had the idea to flow the constellations around a dodecahedron and then print each face individually. Then I could clip each
+  face together, following my plans for a polyhedra construction kit from <a href="../a3/a3.html">assignment 3</a>. I made a dodecahedron from 12 pentagons, but couldn't treat the resulting object as a single surface to 'flow'
+  along. I also tried using the pull and project commands to map the constellations from a sphere to the dodecahedron, but the results were all pretty messy. And since pentagons don't tile a plane, there wasn't a great way to map
+  things manually either. 
+  
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/flowalongsrfq.png">
+    <span class="post-meta center"> dodecahedron drama </span>
+  </div>
+  <br/><br/>
+
+  So, iteration 2 didn't make it to the printer bed. 
+
+  <h3> iteration 3: fine, i'll print a box </h3>
+  For round three, I decided to divide my original images into 4 faces to print as flat rectangles,
+  and assemble them into a rectangular lantern around my bulb. I decided on a press-fit base so that I could
+  print new 'lamp-shades' and swap them out if & when I wanted to.
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/pressfit.jpg">
+    <span class="post-meta center"> press-fit lampshade </span>
+  </div>
+  <br/><br/>
+  I wanted a hanging pendant lamp, so to stabilize the base I made a structure to hang over the bulb. The hole
+  is large enough to slip over the plug; the fingers that come out reach the small screw that is present on the 
+  above the bulb socket to keep the lamp in place. The fingers are filleted extrusions 0.6mm in height; I quickly printed
+  sections of varying heights to see the tradeoff between thickness & flex.
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/test-base2.jpg">
+    <img class="fig_img" src="./images/test-base1.jpg">
+    <span class="post-meta center"> test prints for my lamp base </span>
+  </div>
+  <br/><br/>
+
+  The final lamp looks alright I think! Among other things, I should have: made the press fit a tighter 
+  fit and/or added more material to 'press' into in the base; waited for the sides to come off more easily from 
+  the bed, because pulling them up flex them out of shape; maybe added some support around the bottom to keep 
+  thge bottoms square. As mentioned above, the bulb doesn't cast a good shadow, but my phone lightbulb does!
+
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/lamp-close.png">
+  <img class="fig_img" src="./images/lamp-shadows.png">
+  <img class="fig_img" src="./images/lamp-far.jpeg">
+  <span class="post-meta center"> the final lamp, again for effect! </span>
+</div>
+<br/><br/>
+
+  <h2 #id=mold>mold!</h2>
+  I was trying out grasshopper's python functionality, and thought some mathematical shapes would be fun to generate with it.
+  I made a simple generator for <a href="https://en.wikipedia.org/wiki/Lissajous_knot">Lissajous knots</a>, using the equations
+  $$x = cos(n_xt + \phi_x), \quad y = cos(n_yt + \phi_y), \quad z = cos(n_zt + \phi_z)$$
+
+  where \(n_x, n_y, n_z\) need to be relatively prime for the knot to not self-intersect, and any one of the phase shifts can be
+  assumed to be 0. The generator is controlled from grasshopper:
+
+  <br/><br/>
+  <div class="gallery">
+    <img class="fig_img" src="./images/knot-generator.gif">
+    <span class="post-meta center"> knots! </span>
+  </div>
+  <br/><br/>
+
+  For my mold, I thought I'd try a treifold knot.
 </div>
 </body>
 </html>
-

@@ -131,6 +131,9 @@ ul, ol { padding-left: 1.2em; }
   width: 100%; 
 }
 
+
+
+
 .thumb {
     object-fit: cover;
     width:300px;
@@ -196,9 +199,11 @@ hr:after {
   max-width: 100%;
 }
 
-.fig_img:hover .fig_img-top {
-  display: inline;
+.fig_img:hover {
+  transform: scale(2);
+  z-index: 10;
 }
+
 
 /* .header class used for all header images at tops of project pages */
 .header_img {
