@@ -18,9 +18,134 @@
 </div>
 
 <div class="hw-content">
-  <h2><mark>this is a homework template</mark></h2>
+  <h2><mark>final project proposal!</mark></h2>
+  <span class="post-meta"> last edited: 2021.05.19 </span>
 
-  lots of cool digital fabrication will be here!
+  <h2> concept</h2>
+  I've been playing around a bit with 3D printing structures that might be a bit difficult or a pain to print with a Rhino to Cura workflow. For example, single line width spirals like this:
+
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/experiments-in-z.gif">
+  <span class="post-meta center"> sped up 20x </a>  </span>
+  </div>
+  <br/><br/>
+
+This meant a lot of fiddling with flow rates and speeds; for the above I generated GCode from a grasshopper python script, omitting Cura entirely. This was an annoyingly laborious process. I think it would be fun to be able
+to play around with direct gcode manipulation a bit easier to explore. I'm taking LIA's 2014 <a href="https://www.liaworks.com/theprojects/filament-sculptures/"> filament sculptures </a> as inspiration here, too.
+
+<br/><br/>
+<div class="gallery">
+<img class="fig_img" src="./images/lia-somthing.jpg">
+<span class="post-meta center"> from LIA's 2014 <a href="https://www.liaworks.com/theprojects/filament-sculptures/"> filament sculptures </a> </span>
+</div>
+<br/><br/>
+
+To play around with this, for my final project I propose <b> generating GCode from <a href="https://p5js.org/">p5.js </a></b> to make <b>a set of 3 generative vases </b>. For the three vases,
+my goal is to have:
+<ol>
+  <li> one be something that would also be easy to recreate in Rhino (e.g. a box)</li>
+  <li> the other two be less easy to accomplish via Rhino/Cura (e.g. single line extrusions, something more like Cura's wireprint mode)  </li>
+</ol>
+
+In lieu of a rendering, here's brief look at what I've set up thus far, which uses wired serial communication from my laptop to my ender to format Marlin flavor GCode:
+
+<br/><br/>
+<div class="gallery">
+<video class="tab" controls>Your browser does not support the &lt;video&gt; tag.
+    <source src="./images/test.mp4"/>
+  </video>
+<span class="post-meta center">    </span>
+</div>
+<br/><br/>
+<h2> timeline</h2>
+My timeline is as follows; documentation is ongoing throughout this schedule:
+<br/><br/>
+<table>
+  <tr>
+    <th> day </th>
+    <th> plan </th>
+  </tr>
+
+  <tr>
+    <td> 5/19</td>
+    <td> proposal </td>
+  </tr>
+  <tr>
+    <td> 5/20</td>
+    <td>  work on comms</td>
+  </tr>
+  <tr>
+    <td> 5/21</td>
+    <td>  work on comms </td>
+  </tr>
+  <tr>
+    <td> 5/22</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td> 5/23</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td> 5/24</td>
+    <td class="fill-cell"> finalize printer-p5 communication</td>
+  </tr>
+  <tr>
+    <td> 5/25</td>
+    <td class="fill-cell"> print vase 1 </td>
+  </tr>
+  <tr>
+    <td> 5/26</td>
+    <td> vase 2/3 design </td>
+  </tr>
+  <tr>
+    <td> 5/27</td>
+    <td> vase 2/3 design </td>
+  </tr>
+  <tr>
+    <td> 5/28</td>
+    <td class="fill-cell"> print vase 2 </td>
+  </tr>
+  <tr>
+    <td> 5/29</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td> 5/30</td>
+    <td>  </td>
+  </tr>
+  <tr>
+    <td> 5/31</td>
+    <td> vase 3 design </td>
+  </tr>
+  <tr>
+    <td> 6/1</td>
+    <td class="fill-cell"> print vase 3 </td>
+  </tr>
+  <tr>
+    <td> 6/2</td>
+    <td> presentation </td>
+  </tr>
+</table>
+
+  <h2> contingency plans</h2>
+  <ul>
+    <li> the most hazy element right now is sending gcode directly from p5 to the printer. if i drop this element and instead generate gcode that i print from an sd card, things should be totally doable </li>
+    <li> as of now, i'm hoping to print more than 3 vases; but if need be, I can design and print fewer (i.e 2).</li>
+  </ul>
+
+  <h2> materials </h2>
+  I've got all the materials I need for this! I might, however, order another color filament, an order I will place by the end of this week if I choose to proceed.
+  
+
+
+</table>
+
+
+
+
+
 
 </div>
 </body>
