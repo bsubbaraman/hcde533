@@ -165,7 +165,7 @@ class GCoder {
     return cmd;
   }
 
-  moveExtrude(x, y, z, v = 1500, e = 2 * this.makeE(x, y, z)) {
+  moveExtrude(x, y, z, v = 1500, e = this.makeE(x, y, z)) {
     this.x = parseFloat(x).toFixed(2);
     this.y = parseFloat(y).toFixed(2);
     this.z = parseFloat(z).toFixed(2);

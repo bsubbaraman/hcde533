@@ -20,10 +20,10 @@
 
 <div class="hw-content">
   <h2><mark>final project!</mark></h2>
-  <span class="post-meta"> last edited: 2021.06.01 </span>
+  <span class="post-meta"> last edited: 2021.06.02 </span>
 
   <ul>
-    <li> <a href="#results"> results </a></li>
+    <li><a href="#results"> results</a></li>
     <li> <a href="#concept"> concept </a></li>
     <li> <a href="#implementation"> implementation </a></li>
     <li> <a href="#experiments"> experiments </a></li>
@@ -31,22 +31,22 @@
       <li> <a href="#e1"> proof of concept </a></li>
       <li> <a href="#e2"> dots & lines </a></li>
       <li> <a href="#e3"> loops & texture </a></li>
-      <li> <a href="#e5"> up & to the left </a></li>
+      <li> <a href="#e4"> up & to the left </a></li>
       <li> <a href="#e5"> clippy bed leveling </a></li>
     </ul>
     <li> <a href="#future"> next steps </a></li>
   </ul>
 
-  <!-- <h2 id="results"> the results! </h2>
+  <h2 id="results"> the results! </h2>
   <br/><br/>
   <div class="gallery">
   <img class="fig_img" src="./images/v1.PNG">
   <img class="fig_img" src="./images/e2-1.PNG">
   <img class="fig_img" src="./images/e3-2.PNG">
   <img class="fig_img" src="./images/helix-1.PNG">
-  <span class="post-meta center"> choose ur fighter <br/> samples from experiments 1-4, from left to right</span>
+  <span class="post-meta center"> some of the Things i made with my Thing </span>
   </div>
-  <br/><br/> -->
+  <br/><br/>
 
   <h2 id="concept"> concept! </h2>
   My project conceit was to <b>send gcode commands directly to my printer from p5.js</b> and use this system to <b>design & print 3 vases</b>. I'll take some time here to explain and
@@ -206,7 +206,7 @@
   <br/><br/>
 
   So I made the exciting trip out of the x-y plane! To get varying loops and texture, I tried moving along a sine wave to build up a textured surface. I figured a sine wave
-  would give good/normal adhesian on the edges, and varying texture in the middle.  Again, there was a lot of exploring the parameter-space; extruding from too low 
+  would give good/normal adhesion on the edges, and varying texture in the middle.  Again, there was a lot of exploring the parameter-space; extruding from too low 
   a height yielded no effect, and too high produced a stringy mess. I made some swatches
   while testing this out. You can see that the first layers were often more unruly than the subsequuent ones; often the higher layers looked pretty normal.
   <br/><br/>
@@ -240,7 +240,7 @@
   <br/><br/>
 
 
-<h3 id="e4">experiment four: up and to the left </h3>
+<h3 id="e4">experiment four: up & to the left </h3>
 I had previously tried to print a springy helix with rhino/grasshopper; as a comparison of the process, I tried to do the same here. Again, this was about
 striking a balance between speed, climb height, and helix radius. I was able to iterate much more quickly this time around:
 
@@ -269,6 +269,26 @@ though!
 </div>
 <br/><br/>
 
+<h3 id="e5">experiment four: clippy bed leveling </h3>
+To see how this might be used in a calibration context, I tried a simple webpage that steps through the process of levelling the bed. It's not quite done... but a general idea is here. 
+
+<br/><br/>
+<div class="gallery">
+  <video width="640" height="280" controls>
+    <source src="./images/bed-level-test.mov" type="video/mp4">
+  </video>
+  <span class="post-meta center"> bed leveling through a paper test process </span>
+</div>
+<br/><br/>
+
+<h2 id="future"> next steps </h2>
+There are likely many next steps! But, immediate things I'd like to do are: 
+<ul>
+  <li> finish & improve bed leveling helper</li>
+  <li> incorporate live feedback from the printer to p5 while the print is in progress </li>
+  <li> wrap some of this up in a little interface to be able to make changes more easily without changing the code </li>
+  <li> ++!</li>
+</ul>
 
 
 </div>

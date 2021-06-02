@@ -5,21 +5,24 @@ function setup() {
 
   gcoder = new GCoder();
   gcoder.on("ok", gcoder.serial_ok);
-
-  gcoder.serial.requestPort();
+  button = createButton('click me');
+  button.position(0, 0);
+  button.mousePressed(changeBG);
   gcoder.serial.on("noport", function () {
+      console.log('noport');
     // we don't have access to any ports yet, so we need to request them.
     // add an event listener for a user clicking on the page
     document.addEventListener(
       "click",
       function () {
+          console.log('click');
         gcoder.serial.requestPort();
       },
       { once: true }
     );
   });
 
-  gcoder.serial.on("portavailable", function () {
+    gcoder.serial.on("portavailable", function () {
     // we have a serial port; ender wants to talk at 115200
     gcoder.serial.open({ baudRate: "115200" });
   });
@@ -106,3 +109,7 @@ function onData() {
 }
 
 // saveStrings(gcoder.commands, 'cmds.txt');
+function changeBG() {
+    let val = random(255);
+    gcoder.serial.requestPort();
+  }
