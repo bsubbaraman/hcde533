@@ -88,6 +88,9 @@
   </div>
   <br/><br/>
 
+  <b> visualization </b> From the gcode commands, we can dynamically generate p5 geometry to render on the screen. 
+  <br/><br/>
+
   <b>api</b> To formulate commands, there's a pretty pared down api which formats <a href="https://marlinfw.org/meta/gcode/">marlin-flavored gcode</a> to send. As an example,
   some of the methods look like this:
   <ul>
@@ -95,11 +98,26 @@
     <li> <i>setNozzleTemp(temp)</i> set the nozzle temp and wait for it to heat up (M109 S{temp}) </li>
     <li> <i>moveExtrude(x, y, z, v, e)</i> move to (x,y,z) coordinates at velocity {v} while extruding {e} mm of filament (G1 X{x} Y{y} Z{z} F{v} E{e})</li>
   </ul>
-
-  <br/><br/>
-  <b> visualization </b> From the gcode commands, we can dynamically generate p5 geometry to render on the screen. 
   <br/><br/>
   <b> feedback </b> ToDo
+
+  <h3>a brief aside on flow math</h3>
+  To calculate the amount of filament to extrude, slicers model how filament is extruded on top of a surface. Slic3r, for example, has some nice docs on how they go about doing this by assuming the cross-sectional shape
+  is a rectangle with semi-circular ends.
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/slic3r-flow.png">
+  <span class="post-meta center">from <a href="https://manual.slic3r.org/advanced/flow-math"> slic3r docs</a> </span>
+  </div>
+  <br/><br/>
+
+  I take a more naive approach to start: assuming continity, we set the volume of material before and after the nozzle to be equal:
+  $$ V_{in} = V_{out} $$
+  $$ e\pi r_{filament}^2 = l\pi r_{nozzle}^2 $$
+  $$ e = \frac{r_{nozzle}}{r_{filament}}l$$
+
+  This equation for cylinders extruded in mid-air (not on a surface) may even be more accurate for some of the line work I want to try. 
+  The extruded filament definitely has a large radius than the nozzle when you up the flow rate, so this isn't totally true... but in any case, it seems to give me a reasonable starting point. 
 
   <h2 id="concept"> experiments! </h2>
   To build out and test the system, I ran through a few 'experiments' to print 3 vases. I wanted the first to be a proof of concept to print something that

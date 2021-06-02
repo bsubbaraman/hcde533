@@ -82,9 +82,7 @@ class GCoder {
     // finalize the geometry
     console.log(this.vertices.length);
     this.model = new p5.Geometry(100, 140);
-    this.model.vertices = this.vertices;//.slice(2); // remove origin
-    console.log(this.vertices[3]);
-    console.log(this.vertices[1]);
+    this.model.vertices = this.vertices.slice(1); // remove origin
     this.model.computeFaces();
     this.model.computeNormals();
   }

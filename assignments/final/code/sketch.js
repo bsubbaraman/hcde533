@@ -1,95 +1,108 @@
 let gcoder;
-let vertices;
-let geom;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
 
   gcoder = new GCoder();
+  gcoder.on("ok", gcoder.serial_ok);
 
-  vertices = [];
-  gcodeDraw();
+  gcoder.serial.requestPort();
+  gcoder.serial.on("noport", function () {
+    // we don't have access to any ports yet, so we need to request them.
+    // add an event listener for a user clicking on the page
+    document.addEventListener(
+      "click",
+      function () {
+        gcoder.serial.requestPort();
+      },
+      { once: true }
+    );
+  });
+
+  gcoder.serial.on("portavailable", function () {
+    // we have a serial port; ender wants to talk at 115200
+    gcoder.serial.open({ baudRate: "115200" });
+  });
+
+  gcoder.serial.on("requesterror", function () {
+    console.log("error!");
+  });
+
+  gcoder.serial.on("open", gcodeDraw);
+  gcoder.serial.on("data", onData);
 }
 
 function draw() {
+  orbitControl(2, 2, 0.001);
   background(0);
-  orbitControl(2, 2, 0.01);
-  lights();
   normalMaterial();
-  model(geom);
+  lights();
+  if (gcoder.model) {
+    model(gcoder.model);
+  }
 }
 
 function gcodeDraw() {
-  gcoder.autoHome();
-  let s = 1000;
-  gcoder.moveRetract(100, 100, 0.5, s);
-  
-  // let's make a vase!
-  // some variables for printing:
+  // setup printing variables
+  // this is a standard setup block:
+  let s = 1000; // speed, mm/min
+  gcoder.setERelative();
+  gcoder.fanOn();
+  gcoder.autoHome(); // 
+  gcoder.setNozzleTemp(200); // wait for nozzle to heat up
+  gcoder.setBedTemp(70); // wait for bed to heat up
+  gcoder.introLine(); // line back and forth to clean nozzle
+
+  // design your artifact here!
+  // here's a vase example
+  let r = 10;
   let step = TWO_PI / 100;
   let startHeight = 0.2;
   let maxHeight = 150;
   let layerHeight = 1;
-  
-  // and some vase parameterizations...
   let rb = 50;
-  let amp = 10;
-  
+  let amp = 5;
+  // vase
   for (let z = startHeight; z < maxHeight; z += layerHeight) {
     let a = map(z, startHeight, maxHeight, 0, 4 * TWO_PI);
     r = map(
       cos(map(z / maxHeight, 0, 1, 2, 0.5) * a),
       -1,
       1,
-      rb - amp * cos(a) * (1 - z / maxHeight),
-      rb + amp * cos(a) * (1 - z / maxHeight)
+      rb - 5 * cos(a) * (1 - z / maxHeight),
+      rb + 5 * cos(a) * (1 - z / maxHeight)
     );
 
+    console.log(rb - (1 - z / maxHeight));
     for (let t = 0; t < TWO_PI; t += step) {
       let x = r * cos(t) + 100;
       let y = r * sin(t) + 100;
       gcoder.moveExtrude(x, y, z, s);
     }
   }
+  // end artifact
 
-  gcodeParse();
+  gcoder.render(); // if you want to visualize it
+  gcoder.presentPart(); // pop the bed out. 
+  gcoder.print(); //print it!
 }
 
-function gcodeParse() {
-  gcoder.commands.forEach((cmd) => {
-    cmd = cmd.trim().split(" ");
-    var code = cmd[0].substring(0, 2);
-    if (code !== "G1") {
-      //G1 are extrusion commands. assume never extrude on G0
-      return;
+function onData() {
+  let lineFeedChar = 10;
+  let incomingChar = gcoder.serial.readBytes();
+  let resp = "";
+  if (incomingChar[incomingChar.length - 1] == lineFeedChar) {
+    for (let i = 0; i < incomingChar.length; i++) {
+      resp += String.fromCharCode(incomingChar[i]);
     }
+  }
 
-    var newV = new p5.Vector();
-    cmd.forEach((c) => {
-      switch (c.charAt(0)) {
-        case "X":
-          newV.x = c.substring(1);
-          break;
-        case "Y":
-          newV.z = c.substring(1); // switch z-x
-          break;
-        case "Z":
-          newV.y = c.substring(1); // switch z-x
-          break;
-        case "E":
-          if (c.substring(1) < 0) {
-            return;
-          }
-      }
-    });
-    vertices.push(newV);
-  });
-
-  // finalize the geometry
-  geom = new p5.Geometry(100, 140);
-  geom.gid = random(1000);
-  console.log(vertices.length);
-  geom.vertices = vertices.slice(1); // remove origin
-  geom.computeFaces();
-  geom.computeNormals();
+  console.log("The response is: " + incomingChar);
+  if (resp.search("k") > -1 || resp == "\n") {  // eek... sometimes o and k come in different packets!
+    gcoder.emit("ok", gcoder);
+  } else {
+    console.log("waiting...");
+  }
 }
+
+// saveStrings(gcoder.commands, 'cmds.txt');
