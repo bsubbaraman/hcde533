@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../../style.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -18,9 +19,239 @@
 </div>
 
 <div class="hw-content">
-  <h2><mark>this is a homework template</mark></h2>
+  <h2><mark>final project!</mark></h2>
+  <span class="post-meta"> last edited: 2021.06.01 </span>
 
-  lots of cool digital fabrication will be here!
+  <ul>
+    <li> <a href="#results"> results </a></li>
+    <li> <a href="#concept"> concept </a></li>
+    <li> <a href="#implementation"> implementation </a></li>
+    <li> <a href="#experiments"> experiments </a></li>
+    <ul>
+      <li> <a href="#e1"> proof of concept </a></li>
+      <li> <a href="#e2"> dots & lines </a></li>
+      <li> <a href="#e3"> loops & texture </a></li>
+      <li> <a href="#e5"> up & to the left </a></li>
+      <li> <a href="#e5"> clippy bed leveling </a></li>
+    </ul>
+    <li> <a href="#future"> next steps </a></li>
+  </ul>
+
+  <!-- <h2 id="results"> the results! </h2>
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/v1.PNG">
+  <img class="fig_img" src="./images/e2-1.PNG">
+  <img class="fig_img" src="./images/e3-2.PNG">
+  <img class="fig_img" src="./images/helix-1.PNG">
+  <span class="post-meta center"> choose ur fighter <br/> samples from experiments 1-4, from left to right</span>
+  </div>
+  <br/><br/> -->
+
+  <h2 id="concept"> concept! </h2>
+  My project conceit was to <b>send gcode commands directly to my printer from p5.js</b> and use this system to <b>design & print 3 vases</b>. I'll take some time here to explain and
+  motivate this concept:
+
+  <br><br/>
+
+  <a href="https://p5js.org/">p5.js</a> is "a Javascript library for creative coding, with a focus on making coding accessible and inclusive for artists, designers, 
+  educators, beginners, and anyone else!". It's free & open-source, and is an interpretation of <a href="https://processing.org/">Processing</a> for the web. p5 makes it easy for people to start 
+  coding fast (you can start coding straight from the online editor, no downloads required), and it's geared towards visual design; right out the box, you can start
+  pushing pixels to the screen to make lines, shapes, and pretty colors. So, the p5 environment/community/++ feels well-suited to 3D printing explorations! 
+  <br/><br/>
+  A CAD to slicer (e.g. Rhino to Cura) workflow abstracts away tedious gcode details, but it also requires owning & learning CAD. Some users, however, might appreciate
+  the control offered by direct gcode manipulation. This system is geared towards the latter. In particular, I want to explore how printing from p5 might offer a method
+  for repeatable & controlled experimentation (e.g. testing/tuning/calibrating the machine, learning how the printer works, examining material properties) as well as open-ended exploration (e.g. generative
+  form-finding, quick design iterations). For both of these dual considerations, a useful reference for me is Kate Compton's so-called 'grokloop':
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/grokloop.png">
+  <span class="post-meta center"> grokloop, from <a href="https://www.galaxykate.com/pdfs/galaxykate-zine-casualcreators.pdf"></a> Kate Compton </span>
+  </div>
+  <br/><br/>
+  In evaluating a system that produces artifacts, Compton conceptualizes the 'gulf of execution' (the time between planning & executing an idea for an artifact) and the 'gulf of evaluation'
+  (the time it takes to generate and display the artifact itself). 3D printing has an inherently slow gulf of execution- the time it takes to see the artifact can 
+  be on the order of minutes, hours, or even days. In printing from p5, one design goal is to more tightly couple design execution and evaluation. While we can't decrease
+  print times, we might encourage more rapid exploration of the design space by supporting a workflow that is more conversational.  
+
+  <h2 id="implementation"> implementation! </h2>
+  For this project, I worked pretty horizontally; I tried to get diffferent components working well enough to play around with and get a sense of the whole system without getting
+  <i>too</i> caught up in the details. Some elements of the system include:<br/><br/>
+  <b>communication</b> The printer and p5 talk over USB using serial communication. After receiving the gcode command, the printer will reply with a status. This might be 'busy' (e.g. executing a commnand, like 
+  heating up the bed), 'error' (e.g. invalid gcode), or 'ok' (the command was successfully added to the buffer). We send gcode and wait for the 'ok' status response before
+  sending the next line to ensure reliable communication.
+
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/comms.png">
+  <span class="post-meta center"> printer and p5 are friends :') </span>
+  </div>
+  <br/><br/>
+
+  <b>api</b> To formulate commands, there's a pretty pared down api which formats <a href="https://marlinfw.org/meta/gcode/">marlin-flavored gcode</a> to send. As an example,
+  some of the methods look like this:
+  <ul>
+    <li> <i>autoHome()</i> home the printer (G28) </li>
+    <li> <i>setNozzleTemp(temp)</i> set the nozzle temp and wait for it to heat up (M109 S{temp}) </li>
+    <li> <i>moveExtrude(x, y, z, v, e)</i> move to (x,y,z) coordinates at velocity {v} while extruding {e} mm of filament (G1 X{x} Y{y} Z{z} F{v} E{e})</li>
+  </ul>
+
+  <br/><br/>
+  <b> visualization </b> From the gcode commands, we can dynamically generate p5 geometry to render on the screen. 
+  <br/><br/>
+  <b> feedback </b> ToDo
+
+  <h2 id="concept"> experiments! </h2>
+  To build out and test the system, I ran through a few 'experiments' to print 3 vases. I wanted the first to be a proof of concept to print something that
+  might be straightforward to build from e.g. Rhino. I wanted the second and third to be process artifacts built from exploring the printing techniques made
+  accessible by the system. Finally, I also wanted to build a more utilitarian 'wizard' that can help with bed levelling.
+
+  <h3 id="e1">experiment one: proof of concept</h3>
+  In p5, playing with sine waves of varying amplitudes and frequencies is an easy way to get fun results fast. So, for may first vase, I wanted some undulating pattern
+  on an otherwise-normal cylinder. This was a chance to test out my first pass at a 'pre-viz' rendering! Here's an example of what that looked like:
+  <br/><br/>
+  <div class="gallery">
+    <video width="640" height="280" controls>
+      <source src="./images/viz-test.mov" type="video/mp4">
+    </video>
+  </div>
+  <br/><br/>
+
+  After I settled on a look I liked, I had to reckon with what is physically possible, i.e. test printing it! Since this is a proof of concept, I started small. 
+  This helped me tune my flow rate and speeds a bit.
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/e1-0.PNG">
+  <span class="post-meta center"> little guys! </span>
+  </div>
+  <br/><br/>
+  After a couple print errors from not setting the bedtemperature high enough for adhesion, I went big and ended up with a this vase:
+
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/v1.png">
+  <img class="fig_img" src="./images/e1-2.png">
+  <span class="post-meta center"> a 'vase'! </span>
+  </div>
+  <br/><br/>
+
+  <h3 id="e2">experiment two: dots & lines </h3>
+  Taking LIA's <a href="https://www.liaworks.com/theprojects/filament-sculptures/"> filament sculptures </a> as inspiration here, I wanted to try some some delicate linework.
+  It felt like this is where the p5 workflow could really shine! My idea was to extrude 'dots' that serve as anchors for 'lines'. At first, I thought that the lines should
+  be drawn <i>sloooooowwwwwlllyyy</i> so that the filament could cool and stiffen back up while it travelled. That wasn't the case:
+
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/scraps.PNG">
+  <span class="post-meta center"> material consequences of exploring the parameter-space </span>
+  </div>
+  <br/><br/>
+
+  I learned that I should actually move from dot-to-dot quite quickly with the lines, which tensions the line and reduces sagging. I ended up extruding 3 mm high 'dots' adhesion
+  lines with the print head moving at 2000 mm/min.  On my first pass, I extruded a dot, made a line, extruded another dot, etc. The tail end of the line, though, would sag
+  when I did this. I settled on moving around to place each of my dots first, then connecting them with a line. This method was prone to stringing, but I was able to reduce
+  that quite a bit by playing around with my retraction settings (i.e. move from spot to spot while retracting filament instead of extruding). Here's a video of one being built up:
+
+  <br/><br/>
+  <div class="gallery">
+    <video width="640" height="280" controls>
+      <source src="./images/line-vase1-20x.mp4" type="video/mp4">
+    </video>
+    <span class="post-meta center"> 20x speed </span>
+  </div>
+  <br/><br/>
+
+  After I could make one, I could try playing with different structures! A tried some that twist, or get smaller as they climb up, and both. Though it took
+  a good while to come up with the settings for my first one, I was actually quite surprised at how well the next iterations worked. My favorite one was the taller twisty fella!
+
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/e2-all.PNG">
+  <img class="fig_img" src="./images/e2-1.PNG">
+  <img class="fig_img" src="./images/e2-2.PNG">
+  <img class="fig_img" src="./images/e2-3.PNG">
+  <img class="fig_img" src="./images/e2-4.PNG">
+  <img class="fig_img" src="./images/e2-5.PNG">
+  <span class="post-meta center"> the dot-line-vases can't support much weight, but dried flowers worked pretty well! </span>
+  </div>
+  <br/><br/>
+
+  <h3 id="e3">experiment three: loops & texture </h3>
+  Experiment two required precise tuning of variables; for experiment three, I explored what small perturbations to a well-calibrated machine might look like. If the nozzle 
+  is too close to the bed, we get little-to-no filament out; if it's too high, then we get a ball of filament stuck to the nozzle. In betwee, we get different loops
+  of varying sizes:
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/curl-test.PNG">
+  <span class="post-meta center"> The filament naturally curls if the nozzle is far from the bed. </span>
+  </div>
+  <br/><br/>
+
+  So I made the exciting trip out of the x-y plane! To get varying loops and texture, I tried moving along a sine wave to build up a textured surface. I figured a sine wave
+  would give good/normal adhesian on the edges, and varying texture in the middle.  Again, there was a lot of exploring the parameter-space; extruding from too low 
+  a height yielded no effect, and too high produced a stringy mess. I made some swatches
+  while testing this out. You can see that the first layers were often more unruly than the subsequuent ones; often the higher layers looked pretty normal.
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/e3-0.PNG">
+  <span class="post-meta center"> 3 texture swatches </span>
+  </div>
+  <br/><br/>
+  To achieve the desired effect, I ended up increasing the amplitude of the sine wave over time to maintain the texture:
+
+  <br/><br/>
+  <div class="gallery">
+    <video width="640" height="280" controls>
+      <source src="./images/texture-20x.mp4" type="video/mp4">
+    </video>
+    <span class="post-meta center"> 20x speed </span>
+  </div>
+  <br/><br/>
+
+  While still a bit rough around the edges, I like how this vase turned out!
+
+  <br/><br/>
+  <div class="gallery">
+  <img class="fig_img" src="./images/e3-1.PNG">
+  <img class="fig_img" src="./images/e3-2.PNG">
+  <img class="fig_img" src="./images/e3-3.PNG">
+  <img class="fig_img" src="./images/e3-4.PNG">
+  <img class="fig_img" src="./images/e3-5.PNG">
+  <span class="post-meta center"> more vase! </span>
+  </div>
+  <br/><br/>
+
+
+<h3 id="e4">experiment four: up and to the left </h3>
+I had previously tried to print a springy helix with rhino/grasshopper; as a comparison of the process, I tried to do the same here. Again, this was about
+striking a balance between speed, climb height, and helix radius. I was able to iterate much more quickly this time around:
+
+<br/><br/>
+<div class="gallery">
+  <video width="640" height="280" controls>
+    <source src="./images/helix-20x.mp4" type="video/mp4">
+  </video>
+  <span class="post-meta center"> 20x speed </span>
+</div>
+<br/><br/>
+
+I found that above a certain height, the entire structure began vibrating, messing up the helix. By wrapping around a tighter radius, I was able to climb a bit higher
+though!
+<br/><br/>
+<div class="gallery">
+<img class="fig_img" src="./images/springy.gif">
+<span class="post-meta center"> springy.gif </span>
+</div>
+<br/><br/>
+<br/><br/>
+<div class="gallery">
+<img class="fig_img" src="./images/helix-1.PNG">
+<img class="fig_img" src="./images/helix-2.PNG">
+<span class="post-meta center"> spring prom photos </span>
+</div>
+<br/><br/>
+
+
 
 </div>
 </body>
